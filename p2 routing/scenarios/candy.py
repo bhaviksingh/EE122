@@ -19,6 +19,7 @@ def create (switch_type = Hub, host_type = BasicHost, n = 0):
     switch_type.create('s3')
     switch_type.create('s4')
     switch_type.create('s5')
+    switch_type.create('s6')
 
     host_type.create('h1a')
     host_type.create('h1b')
@@ -34,5 +35,7 @@ def create (switch_type = Hub, host_type = BasicHost, n = 0):
     topo.link(s3, s2)
 
     topo.link(s1, s4)
-    topo.link(s4, s5)
     topo.link(s5, s2)
+    topo.link(s4, s6)
+    topo.link(s5,s6)
+
