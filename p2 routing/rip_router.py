@@ -63,9 +63,7 @@ class RIPRouter (Entity):
 			print "Routing update is ", packet.str_routing_table();
 			for dest in packet.all_dests():
 				throughSrc = self.minCosts[packet.src][1] + packet.get_distance(dest)
-				if not self.routingTable[packet.src].has_key(dest): #no info for dest through src
-					self.routingTable[packet.src] = {dest: throughSrc}
-				elif throughSrc < self.routingTable[packet.src][dest]: #cost to dest through src has changed
+				if not self.routingTable[packet.src].has_key(dest) or  throughSrc < self.routingTable[packet.src][dest]: #no info for dest through src
 					self.routingTable[packet.src][dest] = throughSrc
 
 		else: 
